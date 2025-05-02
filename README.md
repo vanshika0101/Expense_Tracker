@@ -66,7 +66,7 @@ This is one way to run your app — you can also build it directly from Android 
 
 Now that you have successfully run the app, let's make changes!
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
 When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
 
@@ -95,3 +95,15 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+# Expense Tracker App Screenshots
+
+Below are screenshots of the Expense Tracker application:
+
+![Expense Tracker Screenshot 1](./expense%20tracker%20images/Screenshot_20250502_134332.jpg)
+
+![Expense Tracker Screenshot 2](./expense%20tracker%20images/Screenshot_20250502_134339.jpg)
+
+![Expense Tracker Screenshot 3](./expense%20tracker%20images/Screenshot_20250502_134351.jpg)
+
+![Expense Tracker Screenshot 4](./expense%20tracker%20images/Screenshot_20250502_134357.jpg)
