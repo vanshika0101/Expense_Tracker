@@ -151,6 +151,7 @@ const OCR = ({ navigation }: NavigationProps) => {
         amount: lastNumber,
         merchant: merchantName 
       });
+      setImageUri('');
 
     } catch (error) {
       console.error('OCR error:', error);

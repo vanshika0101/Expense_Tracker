@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 interface CategoryItem {
   id: number;
@@ -150,6 +151,8 @@ export default function Category() {
     try {
       setIsLoggingOut(true);
       await auth().signOut();
+      await GoogleSignin.revokeAccess();
+    await GoogleSignin.signOut();
       // The auth state listener in App.tsx will handle navigation
       Alert.alert('Success', 'You have been logged out successfully');
     } catch (error) {
