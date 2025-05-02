@@ -8,8 +8,10 @@ import {
   StyleSheet,
   Alert,
   Modal,
+  ActivityIndicator,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import auth from '@react-native-firebase/auth';
 
 interface CategoryItem {
   id: number;
@@ -33,6 +35,7 @@ export default function Category() {
   const [selectedColor, setSelectedColor] = useState('yellow');
   const [editingCategory, setEditingCategory] = useState<CategoryItem | null>(null);
   const [editText, setEditText] = useState('');
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   // Load categories from AsyncStorage when component mounts
   useEffect(() => {
@@ -143,6 +146,20 @@ export default function Category() {
     cat.name.toLowerCase().includes(searchText.toLowerCase())
   );
 
+  const handleLogout = async () => {
+    try {
+      setIsLoggingOut(true);
+      await auth().signOut();
+      // The auth state listener in App.tsx will handle navigation
+      Alert.alert('Success', 'You have been logged out successfully');
+    } catch (error) {
+      console.error('Logout error:', error);
+      Alert.alert('Error', 'Failed to logout. Please try again.');
+    } finally {
+      setIsLoggingOut(false);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.searchRow}>
@@ -152,7 +169,6 @@ export default function Category() {
           value={searchText}
           onChangeText={setSearchText}
           placeholderTextColor={'black'}
-
         />
       </View>
 
@@ -163,7 +179,6 @@ export default function Category() {
           value={newCategory}
           onChangeText={setNewCategory}
           placeholderTextColor={'black'}
-
         />
         <View style={styles.colorPicker}>
           {defaultColors.map(color => (
@@ -208,6 +223,34 @@ export default function Category() {
           </View>
         )}
       />
+
+      <TouchableOpacity 
+        style={styles.logoutButton}
+        onPress={() => {
+          Alert.alert(
+            'Logout',
+            'Are you sure you want to logout?',
+            [
+              {
+                text: 'Cancel',
+                style: 'cancel',
+              },
+              {
+                text: 'Logout',
+                style: 'destructive',
+                onPress: handleLogout,
+              },
+            ]
+          );
+        }}
+        disabled={isLoggingOut}
+      >
+        {isLoggingOut ? (
+          <ActivityIndicator color="white" size="small" />
+        ) : (
+          <Text style={styles.logoutButtonText}>Logout</Text>
+        )}
+      </TouchableOpacity>
 
       <Modal
         visible={!!editingCategory}
@@ -300,7 +343,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     color:'black',
-
   },
   dot: {
     width: 12,
@@ -364,5 +406,18 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
+  },
+  logoutButton: {
+    backgroundColor: '#e74c3c',
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 20,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  logoutButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });

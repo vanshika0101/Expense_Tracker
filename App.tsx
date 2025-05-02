@@ -15,11 +15,12 @@ import { store } from "./src/Store";
 import Login from "./src/Login";
 import Signup from "./src/Signup";
 import Home from "./src/Home";
-import Homess from "./src/Homess";
+import Homess from "./src/OCR";
 import Homes from "./src/Homes";
 import History from "./src/History";
 import Category from "./src/Category";
 import OCRResultScreen from "./src/OCRResultScreen";
+import OCR from "./src/OCR";
 
 import auth from "@react-native-firebase/auth";
 import SplashScreen from "react-native-splash-screen";
@@ -55,7 +56,7 @@ const Tab = createBottomTabNavigator();
 
 const HomeStackNavigator = () => (
   <HomeStack.Navigator>
-    <HomeStack.Screen name="Homess" component={Homess} options={{ headerShown: false }} />
+    <HomeStack.Screen name="OCR" component={OCR} options={{ headerShown: false }} />
     <HomeStack.Screen name="Homes" component={Homes} options={{ headerShown: false }} />
     <HomeStack.Screen name="History" component={History} />
     <HomeStack.Screen name="Category" component={Category} />

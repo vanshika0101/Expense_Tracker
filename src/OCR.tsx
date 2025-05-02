@@ -21,7 +21,7 @@ interface NavigationProps {
   };
 }
 
-const Homess = ({ navigation }: NavigationProps) => {
+const OCR = ({ navigation }: NavigationProps) => {
   const [imageUri, setImageUri] = useState<string | null>(null);
   const [recognizedText, setRecognizedText] = useState('');
 
@@ -228,4 +228,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Homess;
+export default OCR;
