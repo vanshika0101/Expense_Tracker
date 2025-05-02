@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">App</string>
+    <string name="notification_channel_id">chat-notifications</string>
+<string name="notification_channel_name">Chat Notifications</string>
+<string name="notification_channel_description">Notifications for new chat messages</string>
+</resources>
